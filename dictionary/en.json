@@ -1,0 +1,11 @@
+{
+  "Dashboard": {
+    "title": "Hello world!",
+    "about": "Go to the about page",
+    "metaTitle": "Dashboard"
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "dashboard": "Go to Dashboard"
+  }
+}

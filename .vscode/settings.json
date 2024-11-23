@@ -1,0 +1,24 @@
+{
+  // Enables format on save
+  "editor.formatOnSave": true,
+  // Specifies Prettier as the default formatter
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Apply formatting rules based on the prettier configuration file
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "always",
+    "source.fixAll.prettier": "always",
+    "source.fixAll.ts": "always"
+  },
+  "editor.tabSize": 2,
+  "prettier.requireConfig": true
+}
