@@ -43,8 +43,8 @@ export async function fetchClient<T>({
 
   const response = await fetch(fullUrl, fetchOptions);
   if (!response?.ok) {
-    const errorMessage = (await response.json()) as FetchError;
-    throw new FetchError(errorMessage);
+    const error = (await response.json()) as FetchError;
+    throw new FetchError(error);
   }
 
   return response.json() as Promise<T>;

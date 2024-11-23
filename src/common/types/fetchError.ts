@@ -6,6 +6,7 @@ export class FetchError extends Error {
   message: string;
   request_id: string;
   status: string;
+  error: string;
 
   /**
    * Constructs a new `FetchError` instance.
@@ -27,5 +28,6 @@ export class FetchError extends Error {
     this.message = error;
     this.request_id = request_id;
     this.status = status;
+    this.error = error;
   }
 }
