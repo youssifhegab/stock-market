@@ -1,5 +1,5 @@
 import useScrollBottom from '@/common/utils/useScrollBottom';
-import TickerList from '@/modules/Dashboard/TickerList';
+import TickerList from '@/modules/HomePage/TickerList';
 import { useGetTickers } from '@/services/tickers';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import '@testing-library/jest-dom';
@@ -37,7 +37,7 @@ jest.mock('next/navigation', () => ({
     get: jest.fn().mockReturnValue(''),
   }),
 }));
-jest.mock('../modules/Dashboard/Ticker', () => {
+jest.mock('../modules/HomePage/Ticker', () => {
   return function MockTicker({ ticker }: { ticker: Ticker }) {
     return <div data-testid={`ticker-${ticker.ticker}`}>{ticker.name}</div>;
   };

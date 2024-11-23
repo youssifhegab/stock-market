@@ -1,5 +1,5 @@
 import { LANG } from '@/common/constants/lang';
-import Dashboard from '@/modules/Dashboard';
+import Dashboard from '@/modules/HomePage';
 import ReactQueryProvider from '@/providers/ReactQueryProvider';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';

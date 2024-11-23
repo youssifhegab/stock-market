@@ -1,4 +1,4 @@
-import HomePage from '@/modules/Dashboard';
+import HomePage from '@/modules/HomePage';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({
