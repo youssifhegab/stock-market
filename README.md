@@ -47,4 +47,4 @@ Storybook will be available at `http://localhost:6006` (default port).
 ## Live Preview
 
 You can view the live deployment at:
-[https://vercel.com/youssif-hegabs-projects/stock-market-tlpt](https://vercel.com/youssif-hegabs-projects/stock-market-tlpt)
+[https://stock-market-tlpt.vercel.app](https://stock-market-tlpt.vercel.app)
