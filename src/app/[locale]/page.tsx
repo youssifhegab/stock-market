@@ -10,6 +10,10 @@ export async function generateMetadata({
 
   return {
     title: t('metaTitle'),
+    openGraph: {
+      title: t('metaTitle'),
+      description: 'application to track nasdaq stocks',
+    },
   };
 }
 
