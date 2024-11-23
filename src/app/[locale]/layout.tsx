@@ -1,10 +1,9 @@
 import { LANG } from '@/common/constants/lang';
-import { MODE } from '@/common/constants/mode';
 import { cn } from '@/common/utils/cn';
 import { archivo, noto } from '@/common/utils/fonts';
-import { getModeServer } from '@/common/utils/getModeServer';
 import { routing } from '@/i18n/routing';
 import { LocaleProvider } from '@/providers/LocaleProvider';
+import { ModeProvider } from '@/providers/ModeProvider';
 import ReactQueryProvider from '@/providers/ReactQueryProvider';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { type Metadata } from 'next';
@@ -38,26 +37,19 @@ export default async function MainLayout({
   // Provide all messages to the client side
   const messages = await getMessages();
 
-  const mode = getModeServer();
-
-  console.log({ mode });
-
   return (
     <html lang={locale} dir={locale === LANG.AR ? 'rtl' : 'ltr'}>
-      <body
-        className={cn(
-          `${archivo.variable} ${noto.variable} w-screen`,
-          mode === MODE.DARK ? 'dark' : '',
-        )}
-      >
+      <body className={cn(`${archivo.variable} ${noto.variable} w-screen`)}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <CookiesProvider>
-            <LocaleProvider>
-              <ReactQueryProvider>
-                {children}
-                <ReactQueryDevtools initialIsOpen={false} />
-              </ReactQueryProvider>
-            </LocaleProvider>
+            <ModeProvider>
+              <LocaleProvider>
+                <ReactQueryProvider>
+                  {children}
+                  <ReactQueryDevtools initialIsOpen={false} />
+                </ReactQueryProvider>
+              </LocaleProvider>
+            </ModeProvider>
           </CookiesProvider>
         </NextIntlClientProvider>
       </body>
