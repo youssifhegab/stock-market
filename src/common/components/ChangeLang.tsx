@@ -8,8 +8,12 @@ const ChangeLang = () => {
   const locale = useLocale();
 
   return (
-    <Link href={pathname} locale={locale === LANG.EN ? LANG.AR : LANG.EN}>
-      {locale === LANG.EN ? 'العربية' : 'English'}
+    <Link
+      href={pathname}
+      locale={locale === LANG.EN ? LANG.AR : LANG.EN}
+      className="text-black bg-white rounded-full w-8 h-8 flex-shrink-0 flex items-center justify-center"
+    >
+      {locale === LANG.EN ? 'ع' : 'EN'}
     </Link>
   );
 };

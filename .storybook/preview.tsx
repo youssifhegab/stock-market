@@ -1,8 +1,7 @@
+import '!style-loader!css-loader!postcss-loader!tailwindcss/tailwind.css';
 import type { Preview } from '@storybook/react';
-import 'intl-tel-input/build/css/intlTelInput.css';
-import React from 'react';
-
 import { Archivo, Noto_Sans_Arabic as NotoSansArabic } from 'next/font/google';
+import React from 'react';
 
 const archivo = Archivo({
   subsets: ['latin'],
@@ -30,7 +29,7 @@ const preview: Preview = {
       return (
         <main
           dir={direction}
-          className={` ${archivo.className} ${archivo.variable}`}
+          className={` ${archivo.className} ${noto.className}`}
         >
           <Story />
           <div id="modal-root" />

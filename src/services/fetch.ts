@@ -10,7 +10,7 @@
  * @returns - A promise that resolves to the data of type T from the response.
  * @throws - Throws an error if the request fails or the response is not ok.
  */
-export async function fetchApi<T>({
+export async function fetchClient<T>({
   url,
   endpoint,
   body,
@@ -18,7 +18,7 @@ export async function fetchApi<T>({
   options,
   headers = {},
 }: {
-  url?: string;
+  url: string;
   endpoint: string;
   body?: Record<string, unknown>;
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE';

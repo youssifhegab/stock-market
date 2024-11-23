@@ -14,9 +14,9 @@
     "prettier",
     "plugin:prettier/recommended",
     "plugin:storybook/recommended",
+    "next/core-web-vitals",
     "plugin:@tanstack/eslint-plugin-query"
   ],
-  "ignorePatterns": ["dist", ".eslintrc.cjs"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -24,11 +24,6 @@
     },
     "ecmaVersion": 12,
     "sourceType": "module"
-  },
-  "settings": {
-    "import/resolver": {
-      "typescript": {}
-    }
   },
   "plugins": ["react", "@typescript-eslint", "react-hooks", "react-refresh"],
   "rules": {
@@ -49,7 +44,7 @@
         "ignoreRestSiblings": false
       }
     ],
-    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-use-before-define": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "import/prefer-default-export": "off",
@@ -58,6 +53,7 @@
       {
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "no-console": "warn"
   }
 }
