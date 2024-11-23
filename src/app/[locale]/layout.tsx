@@ -22,14 +22,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function LocaleLayout({
+export default async function MainLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const { locale } = params;
+  const locale = params.locale;
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as LANG)) {
     notFound();
@@ -40,13 +40,16 @@ export default async function LocaleLayout({
 
   const mode = getModeServer();
 
+  console.log({ mode });
+
   return (
-    <html
-      lang={locale}
-      dir={locale === LANG.AR ? 'rtl' : 'ltr'}
-      className={cn(mode === MODE.DARK ? 'dark' : '')}
-    >
-      <body className={`${archivo.variable} ${noto.variable} w-screen`}>
+    <html lang={locale} dir={locale === LANG.AR ? 'rtl' : 'ltr'}>
+      <body
+        className={cn(
+          `${archivo.variable} ${noto.variable} w-screen`,
+          mode === MODE.DARK ? 'dark' : '',
+        )}
+      >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <CookiesProvider>
             <LocaleProvider>
