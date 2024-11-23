@@ -10,7 +10,6 @@ import { fetchClient } from './fetch';
 interface TickerPayload {
   limit?: number;
   search?: string;
-  order?: 'asc' | 'desc';
 }
 
 export interface TickerResponse {
@@ -36,20 +35,19 @@ export interface TickerResponse {
 export const tickersKeys = {
   all: ['tickers'],
   lists: () => [...tickersKeys.all, 'list'],
-  list: ({ limit = 50, search, order = 'asc' }: TickerPayload = {}) =>
+  list: ({ limit = 50, search }: TickerPayload = {}) =>
     queryOptions<TickerResponse, FetchError, TickerResponse>({
       queryKey: [
         ...tickersKeys.all,
         {
           limit,
           search,
-          order,
         },
       ],
       queryFn: () => {
         return fetchClient<TickerResponse>({
           url: config.apiUrl,
-          endpoint: `/tickers?active=true&limit=${limit}&apiKey=${config.apiKey}&market=stocks${search ? `&search=${search}` : ''}&order=${order}`,
+          endpoint: `/tickers?active=true&limit=${limit}&apiKey=${config.apiKey}&market=stocks${search ? `&search=${search}` : ''}`,
         });
       },
       placeholderData: keepPreviousData,
