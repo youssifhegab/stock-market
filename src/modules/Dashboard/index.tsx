@@ -1,39 +1,17 @@
-'use client';
-import useScrollBottom from '@/common/utils/useScrollBottom';
-import { Link } from '@/i18n/routing';
-import { useGetTickers } from '@/services/tickers';
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import Footer from './Footer';
 import Header from './Header';
+import TickerList from './TickerList';
 
-const DashboardPage = () => {
-  const t = useTranslations('Dashboard');
-  const [limit, setLimit] = useState(50);
-
-  const { data } = useGetTickers({ limit });
-
-  useScrollBottom({
-    onScrollBottom: () => {
-      setLimit(limit + 50);
-    },
-  });
-
+const HomePage = () => {
   return (
-    <div className="bg-white dark:bg-blue-400">
+    <div className="bg-white relative dark:bg-gray-800 flex-1 flex flex-col">
       <Header />
 
-      <h1>{t('title')}</h1>
-      <Link href="/about">{t('about')}</Link>
-      <div className="flex flex-wrap gap-8 justify-between">
-        {data?.results.map((ticker) => (
-          <div key={ticker.name} className="w-1/4">
-            <p>{ticker.name}</p>
-            <p>{ticker.ticker}</p>
-          </div>
-        ))}
-      </div>
+      <TickerList />
+
+      <Footer />
     </div>
   );
 };
 
-export default DashboardPage;
+export default HomePage;

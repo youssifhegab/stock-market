@@ -11,7 +11,7 @@ const ChangeLang = () => {
     <Link
       href={pathname}
       locale={locale === LANG.EN ? LANG.AR : LANG.EN}
-      className="text-black bg-white rounded-full w-8 h-8 flex-shrink-0 flex items-center justify-center"
+      className="text-white dark:text-black bg-gray-300 dark:bg-white rounded-full w-8 h-8 flex-shrink-0 flex items-center justify-center"
     >
       {locale === LANG.EN ? 'ع' : 'EN'}
     </Link>

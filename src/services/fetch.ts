@@ -1,3 +1,5 @@
+import { FetchError } from '@/common/types/fetchError';
+
 /**
  * Fetch data from an API endpoint with optional configuration.
  *
@@ -41,11 +43,8 @@ export async function fetchClient<T>({
 
   const response = await fetch(fullUrl, fetchOptions);
   if (!response?.ok) {
-    console.log('[useFetch] error: ', response?.status, response?.statusText);
-    const errorMessage = (await response.json()) as {
-      message: string;
-    };
-    throw new Error(errorMessage.message || 'Failed to fetch data');
+    const errorMessage = (await response.json()) as FetchError;
+    throw new FetchError(errorMessage);
   }
 
   return response.json() as Promise<T>;

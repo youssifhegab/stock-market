@@ -1,3 +1,4 @@
+import { FetchError } from '@/common/types/fetchError';
 import config from '@/common/utils/config';
 import {
   keepPreviousData,
@@ -12,7 +13,7 @@ interface TickerPayload {
   order?: 'asc' | 'desc';
 }
 
-interface TickerResponse {
+export interface TickerResponse {
   count: number;
   next_url: string;
   request_id: string;
@@ -36,7 +37,7 @@ export const tickersKeys = {
   all: ['tickers'],
   lists: () => [...tickersKeys.all, 'list'],
   list: ({ limit = 50, search, order = 'asc' }: TickerPayload = {}) =>
-    queryOptions({
+    queryOptions<TickerResponse, FetchError, TickerResponse>({
       queryKey: [
         ...tickersKeys.all,
         {
@@ -45,14 +46,17 @@ export const tickersKeys = {
           order,
         },
       ],
-      queryFn: () =>
-        fetchClient<TickerResponse>({
+      queryFn: () => {
+        return fetchClient<TickerResponse>({
           url: config.apiUrl,
           endpoint: `/tickers?active=true&limit=${limit}&apiKey=${config.apiKey}&market=stocks${search ? `&search=${search}` : ''}&order=${order}`,
-        }),
+        });
+      },
       placeholderData: keepPreviousData,
     }),
 };
 
 export const useGetTickers = (payload?: TickerPayload) =>
-  useQuery(tickersKeys.list(payload));
+  useQuery<TickerResponse, FetchError, TickerResponse>(
+    tickersKeys.list(payload),
+  );

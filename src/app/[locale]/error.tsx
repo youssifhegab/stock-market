@@ -1,5 +1,7 @@
 'use client';
 
+import Button from '@/ui/Button';
+import Typography from '@/ui/Typography';
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 
@@ -7,7 +9,7 @@ export default function Error({
   error,
   reset,
 }: {
-  error: Error & { digest?: string };
+  error: Error;
   reset: () => void;
 }) {
   const t = useTranslations('Error');
@@ -18,9 +20,9 @@ export default function Error({
   }, [error]);
 
   return (
-    <div>
-      <h1>{error.message}</h1>
-      <button onClick={reset}>{t('retry')}</button>
+    <div className="flex flex-col h-screen text-center items-center justify-center gap-4">
+      <Typography variant="body3Xl">{error.message}</Typography>
+      <Button onClick={reset}>{t('retry')}</Button>
     </div>
   );
 }

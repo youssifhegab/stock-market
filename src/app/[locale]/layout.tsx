@@ -8,6 +8,7 @@ import { LocaleProvider } from '@/providers/LocaleProvider';
 import ReactQueryProvider from '@/providers/ReactQueryProvider';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { type Metadata } from 'next';
+import { CookiesProvider } from 'next-client-cookies/server';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -47,12 +48,14 @@ export default async function LocaleLayout({
     >
       <body className={`${archivo.variable} ${noto.variable} w-screen`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <LocaleProvider>
-            <ReactQueryProvider>
-              {children}
-              <ReactQueryDevtools initialIsOpen={false} />
-            </ReactQueryProvider>
-          </LocaleProvider>
+          <CookiesProvider>
+            <LocaleProvider>
+              <ReactQueryProvider>
+                {children}
+                <ReactQueryDevtools initialIsOpen={false} />
+              </ReactQueryProvider>
+            </LocaleProvider>
+          </CookiesProvider>
         </NextIntlClientProvider>
       </body>
     </html>

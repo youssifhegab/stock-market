@@ -3,7 +3,7 @@
  * Extends the built-in `Error` class
  */
 export class FetchError extends Error {
-  error: string;
+  message: string;
   request_id: string;
   status: string;
 
@@ -24,7 +24,7 @@ export class FetchError extends Error {
     status: string;
   }) {
     super(error); // Call the parent class constructor (Error)
-    this.error = error;
+    this.message = error;
     this.request_id = request_id;
     this.status = status;
   }
