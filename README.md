@@ -1,4 +1,4 @@
-# Stock Market TLPT
+# Stock Market
 
 ## Getting Started
 
