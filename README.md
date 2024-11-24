@@ -15,6 +15,9 @@ Follow these instructions to get the project running on your local machine.
 
 ```bash
 git clone https://github.com/youssifhegab/stock-market.git
+```
+
+```bash
 cd stock-market
 ```
 
