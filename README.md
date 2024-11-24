@@ -6,7 +6,7 @@ Follow these instructions to get the project running on your local machine.
 
 ### Prerequisites
 
-- Node.js (Latest LTS version recommended)
+- Node.js (version 20 or higher)
 - npm (Comes with Node.js)
 
 ### Installation
@@ -48,3 +48,6 @@ Storybook will be available at `http://localhost:6006` (default port).
 
 You can view the live deployment at:
 [https://stock-market-tlpt.vercel.app](https://stock-market-tlpt.vercel.app)
+
+You can view the live deployment of storybook at:
+[https://stock-market-storybook.vercel.app](https://stock-market-storybook.vercel.app)
